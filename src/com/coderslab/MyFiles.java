@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class myFiles {
+public class MyFiles {
     public static String[] readFile (String filename) {
         Path filePath = Paths.get(filename);
         String[] stringLines = new String[0];

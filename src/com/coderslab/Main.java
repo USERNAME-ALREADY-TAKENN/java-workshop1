@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         String dataFilename = "data.csv";
-        String[] fileData = myFiles.readFile(dataFilename);
+        String[] fileData = MyFiles.readFile(dataFilename);
         String[] menu = {
                 "Pokaż listę zadań",
                 "Dodaj zadanie",
@@ -34,15 +34,15 @@ public class Main {
             case 1: display.showList(fileData, menu);;
                 break;
             case 2: fileData = modify.addTask(fileData);
-                myFiles.saveToFile(fileData, dataFilename);
+                MyFiles.saveToFile(fileData, dataFilename);
                 break;
             case 3: fileData = modify.removeTask(fileData);
                 break;
-            case 4: myFiles.saveToFile(fileData, dataFilename);
+            case 4: MyFiles.saveToFile(fileData, dataFilename);
                     break;
             case 5:
             default:
-                myFiles.saveToFile(fileData, dataFilename);
+                MyFiles.saveToFile(fileData, dataFilename);
                 return;
         }
         chooseAction(dataFilename, fileData, menu);
