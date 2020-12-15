@@ -3,48 +3,47 @@ package com.coderslab;
 import java.util.Scanner;
 
 public class Main {
+    public static String DATA_FILENAME = "data.csv";
+    public static String[] MENU = {
+            "Pokaż listę zadań",
+            "Dodaj zadanie",
+            "Usuń zadanie",
+            "Zapisz do pliku",
+            "Wyjdź"
+    };
 
     public static void main(String[] args) {
-        String dataFilename = "data.csv";
-        String[] fileData = MyFiles.readFile(dataFilename);
-        String[] menu = {
-                "Pokaż listę zadań",
-                "Dodaj zadanie",
-                "Usuń zadanie",
-                "Zapisz do pliku",
-                "Wyjdź"
-        };
-
-        chooseAction(dataFilename, fileData, menu);
+        String[] fileData = MyFiles.readFile(DATA_FILENAME);
+        chooseAction(fileData);
     }
-    public static int getInput(int menuLength) {
+    public static int getInput() {
         Scanner scan = new Scanner(System.in);
         while (!scan.hasNextInt()) {
             scan.next();
-            System.out.print("\tZła wartość. Podaj liczbę pomiędzy 1 a " + (menuLength+1) + ": ");
+            System.out.print("\tZła wartość. Podaj liczbę pomiędzy 1 a " + (MENU.length+1) + ": ");
         }
         int chosenOption = scan.nextInt();
         return chosenOption;
     }
-    public static void chooseAction(String dataFilename, String[] fileData, String[] menu) {
-        display.showList(fileData, menu);
-        int chosenOption = getInput(menu.length);
+    public static void chooseAction(String[] fileData) {
+        Display.showList(fileData, MENU);
+        int chosenOption = getInput();
 
         switch (chosenOption) {
-            case 1: display.showList(fileData, menu);;
+            case 1: Display.showList(fileData, MENU);
                 break;
-            case 2: fileData = modify.addTask(fileData);
-                MyFiles.saveToFile(fileData, dataFilename);
+            case 2: fileData = Modify.addTask(fileData);
+                MyFiles.saveToFile(fileData, DATA_FILENAME);
                 break;
-            case 3: fileData = modify.removeTask(fileData);
+            case 3: fileData = Modify.removeTask(fileData);
                 break;
-            case 4: MyFiles.saveToFile(fileData, dataFilename);
+            case 4: MyFiles.saveToFile(fileData, DATA_FILENAME);
                     break;
             case 5:
             default:
-                MyFiles.saveToFile(fileData, dataFilename);
+                MyFiles.saveToFile(fileData, DATA_FILENAME);
                 return;
         }
-        chooseAction(dataFilename, fileData, menu);
+        chooseAction(fileData);
     }
 }

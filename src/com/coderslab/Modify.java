@@ -1,13 +1,12 @@
 package com.coderslab;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class modify {
+public class Modify {
     public static String[] addTask (String[] stringArray) {
         System.out.println("\t" + "Podaj nowe zadania w osobnych liniach, wpisz 'quit' aby zakończyć");
-        System.out.println("\t" + "Format zadania: 'treść zadania, data wykonania, ważne: true lub false'");
+        System.out.println("\t" + "Format zadania: 'treść zadania, ważne: true lub false'");
 
         Scanner scan = new Scanner(System.in);
         String line;

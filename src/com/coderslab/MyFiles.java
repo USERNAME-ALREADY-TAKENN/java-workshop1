@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,6 +11,7 @@ public class MyFiles {
     public static String[] readFile (String filename) {
         Path filePath = Paths.get(filename);
         String[] stringLines = new String[0];
+
         try {
             List<String> allLines = Files.readAllLines(filePath);
             //String[] stringArray = list.toArray(new String[0]);
